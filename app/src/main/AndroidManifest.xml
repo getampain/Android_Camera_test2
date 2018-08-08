@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="beprogrammer.camera_test_02">
+
+    <!--
+        안드로이드상의 권한 허가를 위한 부분입니다.
+            android.permission.CAMERA   카메라에대한 권환
+            android.permission.WRITE_EXTERNAL_STORAGE"  SD카드내에 메모리 쓰쓰에 관한 권한
+            android.permission.READ_EXTERNAL_STORAGE    SD카드내에 메모리 읽기에 관한 권한
+            android.hardware.camera2    카메라2를 사용하지 못하면 어플리케이션이 설치되지 않도록 제한
+    -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-feature android:name="android.hardware.camera2"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="beprogrammer.camera_test_02.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
+
+
+    </application>
+
+</manifest>
